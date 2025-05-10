@@ -1,141 +1,62 @@
-# LIBRARY-MANAGEMENT-SYSTEM
+# Clinic Booking System — MySQL Database
 
-## 📚 Project Description
+## ✅ Objective
 
-This project is a comprehensive **Library Management System** developed for the **Power Learn Project Week 8 Assignment**. It is a database-only implementation that uses **MySQL** to manage:
-
-- Books  
-- Authors  
-- Members  
-- Loans  
-
-The system is designed with a focus on:
-
-- ✅ Strong relational integrity  
-- ✅ Primary and foreign key constraints  
-- ✅ Unique and check constraints  
-- ✅ Real-world Kenyan dataset (names, books, and members)  
+To design and implement a fully functional relational database system for managing clinic bookings using MySQL, showcasing normalization, relationships, and constraints.
 
 ---
 
-## 🛠️ Technologies Used
+## 🏥 Use Case: Clinic Booking System
 
-- **MySQL** (Database Engine)
-- **SQL** (Structured Query Language)
-- **Git** (Version Control)
-
----
-
-## 📦 Features
-
-- Add and manage book records  
-- Register and update members  
-- Record loan transactions  
-- Track book availability and returns  
-- Enforces data integrity with relational constraints  
-- Rich sample data featuring Kenyan names and literature  
+This system supports:
+- Patient registration
+- Doctor assignments and departments
+- Scheduling and tracking appointments
+- Prescribing medications
+- Tracking services offered by different doctors
 
 ---
 
-## 🚀 Getting Started
+## 🧱 Database Structure
 
-### ✅ Prerequisites
-
-- MySQL Server (e.g., MySQL Community Server 8.0+)
-- Git
-
----
-
-### 📥 Setup Instructions
-
-#### 1. Clone the Repository
-
-```bash
-git clone <repository_url>
-cd library-management-system
-```
-
-#### 2. Start MySQL and Log In
-
-```bash
-mysql -u root -p
-```
-
-#### 3. Create and Populate the Database
-
-Option 1: From inside MySQL shell
-
-```sql
-SOURCE database/library_management.sql;
-```
-
-Option 2: From terminal
-
-```bash
-mysql -u root -p < database/library_management.sql
-```
+| Table             | Description                                       |
+|------------------|---------------------------------------------------|
+| `departments`     | Stores clinic departments (e.g., Pediatrics)      |
+| `doctors`         | Stores doctor info and links them to departments |
+| `patients`        | Patient personal details                          |
+| `appointments`    | Links patients to doctors with visit details     |
+| `services`        | Medical services offered (e.g., X-Ray)           |
+| `doctor_services` | M-M relationship between doctors and services    |
+| `medications`     | Available medicines                              |
+| `prescriptions`   | Medicines prescribed during appointments         |
 
 ---
 
-## 🗃️ Database Structure
+## 🔗 Relationships
 
-The system contains the following core tables:
+- **One-to-Many**: 
+  - Departments → Doctors  
+  - Patients → Appointments  
+  - Doctors → Appointments  
 
-- `authors` – stores author information
-- `books` – stores book details and availability
-- `members` – stores library member records
-- `loans` – tracks loans and return dates
+- **Many-to-Many**:
+  - Doctors ↔ Services (`doctor_services`)
 
-Each table includes constraints to ensure:
-
-- Referential integrity (foreign keys)
-- Uniqueness (e.g., ISBNs, emails)
-- Validity checks (e.g., positive quantities)
+- **One-to-One**:
+  - Appointments → Prescriptions (1 prescription per appointment)
 
 ---
 
-## 🧩 Entity-Relationship Diagram (ERD)
+## 🔐 Constraints Used
 
-An ERD is provided in the `erd/` folder to visualize:
-
-- Table relationships  
-- Primary and foreign keys  
-- 1-to-many and many-to-many connections  
-
----
-
-## 🇰🇪 Kenyan Context
-
-This system is tailored to a Kenyan setting with:
-
-- Local names (e.g., Wanjiku Muthoni, Kamau Wanyama)  
-- Kenyan literature titles  
-- Realistic scenarios and loan records  
+- `PRIMARY KEY` on all main tables  
+- `FOREIGN KEY` to ensure referential integrity  
+- `UNIQUE` constraints on emails, department/service names  
+- `NOT NULL` on essential fields
 
 ---
 
-## 📁 Project Structure
+## 📦 Deliverables
 
-```
-library-management-system/
-├── database/
-│   └── library_management.sql
-├── erd/
-│   └── erd-diagram.png
-├── README.md
-```
-
----
-
-## 📝 License
-
-This project is for educational purposes under the **Power Learn Project**. Free to use and modify with credit.
-
----
-
-## 🙌 Acknowledgements
-
-- Power Learn Project Team  
-- MySQL Documentation  
-- Fellow learners and mentors
-
+- `clinic_booking_system.sql` – SQL file with all `CREATE TABLE` statements
+- `README.md` – This documentation file
