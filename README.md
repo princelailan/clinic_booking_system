@@ -1,68 +1,141 @@
-# LIBRARY-MANAGMENT-SYSTEM
-Library Management System
-Project Description
-This project implements a comprehensive Library Management System for the Power Learn Project Week 8 Assignment, consisting of two main components:
+# LIBRARY-MANAGEMENT-SYSTEM
 
-Database Management System (Question 1): A MySQL database designed to manage books, authors, members, and loans, with robust relational constraints (primary keys, foreign keys, unique constraints, and checks). The dataset includes an extensive set of Kenyan names for authors and members, a diverse collection of books (including Kenyan literature), and numerous loan records to demonstrate real-world usage.
-CRUD API (Question 2): A Python FastAPI application providing Create, Read, Update, and Delete operations for managing books and authors, seamlessly connected to the MySQL database.
+## 📚 Project Description
 
-The system supports tracking book inventory, member registrations, and loan transactions, emphasizing robust database design and API functionality tailored to a Kenyan context.
-How to Run/Setup the Project
-Prerequisites
+This project is a comprehensive **Library Management System** developed for the **Power Learn Project Week 8 Assignment**. It is a database-only implementation that uses **MySQL** to manage:
 
-MySQL: Installed and running (e.g., MySQL Community Server 8.0+).
-Python 3.8+: For running the FastAPI application.
-Git: To clone the repository.
-pip: For installing Python dependencies.
+- Books  
+- Authors  
+- Members  
+- Loans  
 
-Setup Instructions
+The system is designed with a focus on:
 
-Clone the Repository:
+- ✅ Strong relational integrity  
+- ✅ Primary and foreign key constraints  
+- ✅ Unique and check constraints  
+- ✅ Real-world Kenyan dataset (names, books, and members)  
+
+---
+
+## 🛠️ Technologies Used
+
+- **MySQL** (Database Engine)
+- **SQL** (Structured Query Language)
+- **Git** (Version Control)
+
+---
+
+## 📦 Features
+
+- Add and manage book records  
+- Register and update members  
+- Record loan transactions  
+- Track book availability and returns  
+- Enforces data integrity with relational constraints  
+- Rich sample data featuring Kenyan names and literature  
+
+---
+
+## 🚀 Getting Started
+
+### ✅ Prerequisites
+
+- MySQL Server (e.g., MySQL Community Server 8.0+)
+- Git
+
+---
+
+### 📥 Setup Instructions
+
+#### 1. Clone the Repository
+
+```bash
 git clone <repository_url>
 cd library-management-system
+```
 
+#### 2. Start MySQL and Log In
 
-Database Setup:
+```bash
+mysql -u root -p
+```
 
-Ensure MySQL is running.
-Log in to MySQL:mysql -u root -p
+#### 3. Create and Populate the Database
 
+Option 1: From inside MySQL shell
 
-Import the SQL file to create and populate the database:SOURCE database/library_management.sql;
+```sql
+SOURCE database/library_management.sql;
+```
 
+Option 2: From terminal
 
-Alternatively, run from the terminal:mysql -u root -p < database/library_management.sql
+```bash
+mysql -u root -p < database/library_management.sql
+```
 
+---
 
+## 🗃️ Database Structure
 
+The system contains the following core tables:
 
-API Setup:
+- `authors` – stores author information
+- `books` – stores book details and availability
+- `members` – stores library member records
+- `loans` – tracks loans and return dates
 
-Navigate to the api directory:cd api
+Each table includes constraints to ensure:
 
+- Referential integrity (foreign keys)
+- Uniqueness (e.g., ISBNs, emails)
+- Validity checks (e.g., positive quantities)
 
-Install Python dependencies:pip install fastapi uvicorn mysql-connector-python
+---
 
+## 🧩 Entity-Relationship Diagram (ERD)
 
-Update the MySQL credentials in api/library_api.py (modify db_config with your host, user, password, and database).
-Run the FastAPI server:python library_api.py
+An ERD is provided in the `erd/` folder to visualize:
 
+- Table relationships  
+- Primary and foreign keys  
+- 1-to-many and many-to-many connections  
 
-Access the API at http://localhost:8000/docs for interactive Swagger UI.
+---
 
+## 🇰🇪 Kenyan Context
 
+This system is tailored to a Kenyan setting with:
 
-Running the Project
+- Local names (e.g., Wanjiku Muthoni, Kamau Wanyama)  
+- Kenyan literature titles  
+- Realistic scenarios and loan records  
 
-The database can be queried directly in MySQL to explore the schema and sample data, which includes a wide range of Kenyan names for authors (e.g., Wanjiku Muthoni, Kipchoge Ngeno) and members (e.g., Kamau Wanyama, Njeri Maina), diverse book titles, and extensive loan records.
-The API provides endpoints for managing authors and books:
-Authors: POST/GET /authors/, GET/PUT/DELETE /authors/{author_id}
-Books: POST/GET /books/, GET/PUT/DELETE /books/{book_id}
+---
 
+## 📁 Project Structure
 
+```
+library-management-system/
+├── database/
+│   └── library_management.sql
+├── erd/
+│   └── erd-diagram.png
+├── README.md
+```
 
-Entity-Relationship Diagram (ERD)
+---
 
-Note: The ERD screenshot is included in the erd directory. It illustrates the relationships between authors, books, members, and loans tables, highlighting primary keys, foreign keys, and cardinality (1-M and M-M).
+## 📝 License
 
+This project is for educational purposes under the **Power Learn Project**. Free to use and modify with credit.
+
+---
+
+## 🙌 Acknowledgements
+
+- Power Learn Project Team  
+- MySQL Documentation  
+- Fellow learners and mentors
 
